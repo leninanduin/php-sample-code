@@ -1,0 +1,5 @@
+
+name = Vission
+description = Vission site misc functions
+package = Vission
+core = 7.x

@@ -1,0 +1,44 @@
+<?php
+/**
+ * Implements hook_node_update().
+ *
+ * Creates a static list of nodes filtered by type using EntityFieldQuery and the node_update hook.
+ * In this way we can populate fileds in the template with out consulting the DB each time.
+*/
+
+function vission_node_update($node){
+    if( $node->type == 'sucursal' ){
+        $cps = array();
+
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'sucursal')
+        ->fieldCondition('field_cp', 'value' , 0, '>')
+        ->propertyCondition('status', 1)
+        ->addMetaData('account', user_load(1));
+
+        $result = $query->execute();
+        if (isset($result['node'])) {
+            $suc_items_nids = array_keys($result['node']);
+            $suc_items = entity_load('node', $suc_items_nids);
+
+            foreach ($suc_items as $suc) {
+                $cp = $suc->field_cp['und'][0]['value'];
+                $cps[$cp] = fetch_cp_data($cp);
+                drupal_set_message( 'nid: '.$suc->nid.json_encode($cps[$cp]).' -> '.json_encode($suc->field_cp['und'][0]) );
+                $cps[$cp]['email_dir'] = array();
+                foreach ($suc->field_correo_eletr_nico['und'] as $mail) {
+                    if ( strpos($mail['email'], '@vissioncable.') !==false){
+                        $cps[$cp]['email_dir'][] = $mail['email'];
+                    }
+                }
+            }
+            $file = $_SERVER['DOCUMENT_ROOT'].THEME_PATH."/templates/includes/cp_files/sucursales_cp.json";
+            $fp = fopen($file,"wb") or drupal_set_message("can't open file ".$file);
+            fwrite($fp,json_encode($cps));
+            fclose($fp);
+        }
+    }
+}
+
+?>
