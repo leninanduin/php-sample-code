@@ -50,11 +50,17 @@ function getWindowSize() {
 
 jQuery(function(){
   getWindowSize();
+  /**
+   * Open and close panel handles.
+   */
   jQuery('#hello-btn > a.handle, #hello-btn-overlay, #hello-btn a.close').click(function(e) {
     e.preventDefault();
     toggleHelloTab();
   });
 
+  /**
+   * Browse betwen the panel sections.
+   */
   jQuery("#hello-btn [go-to]").click(function(e) {
     e.preventDefault();
     var target = jQuery(this).attr('go-to');
@@ -62,7 +68,9 @@ jQuery(function(){
     jQuery('#hello-btn .content .' + target).show();
   });
 
-
+  /**
+   * Close the panel with X button or esc key.
+   */
   jQuery(document).keyup(function(e) {
     if (e.keyCode == 27 && jQuery('#hello-btn').hasClass('expanded')) { // escape key maps to keycode `27`
       toggleHelloTab();
