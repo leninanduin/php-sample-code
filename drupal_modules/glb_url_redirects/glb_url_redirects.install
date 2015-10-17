@@ -1,0 +1,32 @@
+<?php
+  module_load_include("module", "redirect");
+
+  function glb_url_redirects_install() {
+    $row = 1;
+    $saved = 0;
+    if (($handle = fopen(drupal_get_path("module", "glb_url_redirects")."/url_redirects.csv", "r")) !== FALSE) {
+      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+          if ($row > 1) {
+            $redirect = new stdClass();
+            redirect_object_prepare($redirect);
+            $redirect->source = $data[0];
+            $redirect->redirect = $data[1];
+             $redirect->language = 'und';
+            // Check if the redirect exists before saving.
+            $hash = redirect_hash($redirect);
+            if (!redirect_load_by_hash($hash)) {
+              redirect_save($redirect);
+              $saved++;
+            }
+          }
+          $row++;
+      }
+      fclose($handle);
+    }
+    drupal_set_message($saved." redirects have been created.");
+  }
+
+  function glb_url_redirects_uninstall() {
+    drupal_set_message(t('glb_url_redirects is now uninstalled.'));
+  }
+?>

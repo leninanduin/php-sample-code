@@ -1,0 +1,169 @@
+/* xs specific styles */
+/*@media (max-width: 767px) {
+    #hello-btn {
+    }
+}*/
+
+/* sm specific styles */
+@media (max-width: 991px) {
+    #hello-btn {
+        bottom: -100%;
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+        font-size: 16px;
+    }
+
+    #hello-btn .handle {
+        top: -90px;
+        transform: rotate(90deg);
+        right: 25px;
+    }
+
+    #hello-btn .content .row{
+        padding: 20px;
+        width: 90%;
+        margin: 0px auto;
+        display: block;
+    }
+
+    #hello-btn .content .subscribe img{
+        max-height: 350px;
+        margin: 0px auto;
+        display: block;
+    }
+}
+/* md specific styles */
+@media (min-width: 992px) {
+    #hello-btn .handle {
+        margin-top: 70% !important;
+        top: 0;
+        left: -30px;
+    }
+
+    #hello-btn {
+        width: 380px;
+        padding: 50px 20px 20px 20px;
+        margin-left: -5px;
+        top: 0;
+        right: 0;
+        margin-right: -381px;
+        -webkit-box-shadow: 3px 10px 18px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 3px 10px 18px -3px rgba(0,0,0,0.75);
+        box-shadow: 3px 10px 18px -3px rgba(0,0,0,0.75);
+        font-size: 14px;
+    }
+
+    #hello-btn .close {
+        display: none;
+    }
+}
+
+#hello-btn {
+    height: 100% !important;
+    background: #fff;
+    border: #29216d 0px solid;
+    z-index: 111;
+    position: fixed;
+}
+
+#hello-btn .handle {
+    width: 30px;
+    height: 150px;
+    display: block;
+    text-indent: -99999px;
+    outline: none;
+    position: absolute;
+    background: url(../images/btn.png) no-repeat;
+    background-size: 30px auto;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+#hello-btn .handle:hover {
+    background-repeat: no-repeat !important;
+    background-position: 0px -150px !important;
+}
+
+#hello-btn .close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 99;
+    padding: 10px;
+    font-size: 14px !important;
+    opacity: .7;
+}
+
+#hello-btn .close span {
+    font-size: 20px;
+    position: absolute;
+    top: 7px;
+    right: -8px;
+}
+
+#hello-btn .blue {
+    color: #109AD6;
+}
+
+#hello-btn .gray {
+    color: gray;
+}
+
+#hello-btn .blue:hover {
+    color: #109AD6;
+}
+
+#hello-btn .trigger {
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+
+#hello-btn .blue.trigger:hover {
+    opacity: 0.85;
+}
+
+#hello-btn hr {
+    margin: 10px auto;
+    width: 80%;
+    border-top: 1px solid gray;
+}
+
+#hello-btn h2 {
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
+#hello-btn p {
+    color: gray;
+}
+
+#hello-btn .wellcome div {
+    text-align: center;
+}
+
+#hello-btn p.big {
+    margin: 0;
+    font-size: 18px;
+}
+
+#hello-btn .wellcome a.blue {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#hello-btn .wellcome p {
+    margin: 0;
+}
+
+#hello-btn-overlay {
+    background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}

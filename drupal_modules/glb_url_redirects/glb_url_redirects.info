@@ -1,0 +1,5 @@
+name = Url Redirects
+description = "Imports custom 301 redirects for TeleTech"
+core = 7.x
+package = Globant
+dependencies[] = redirect

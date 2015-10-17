@@ -1,0 +1,6 @@
+name = Hello Button
+description = Persistent resources panel
+package = Globant
+core = 7.x
+dependencies[] = views
+configure = admin/config/user-interface/hello-btn

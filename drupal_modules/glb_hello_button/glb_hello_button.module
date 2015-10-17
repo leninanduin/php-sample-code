@@ -1,0 +1,64 @@
+<?php
+
+require_once drupal_get_path('theme', 'main') . '/template.php';
+
+/**
+ * @file
+ * Implements a block to render the top navigation.
+ */
+
+/*
+ * Implements of hook_init().
+ */
+function glb_hello_button_init() {
+  if (!path_is_admin(current_path())) {
+    drupal_add_css(
+      drupal_get_path('module', 'glb_hello_button') . '/css/hello-btn.css',
+      array(
+        'group' => CSS_THEME,
+        'weight' => 100,
+      )
+    );
+
+    drupal_add_js(
+      drupal_get_path('module', 'glb_hello_button') . '/js/hello-btn.js',
+      array(
+        'group' => JS_THEME,
+        'weight' => 100,
+      )
+    );
+  }
+}
+
+/**
+ * Implements of hook_menu().
+ */
+function glb_hello_button_menu() {
+  $items['admin/config/user-interface/hello-btn'] = array(
+    'title' => 'Hello Button resources panel',
+    'description' => 'Customize panel contents.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('glb_hello_button_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'glb_hello_button.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function glb_hello_button_theme($existing, $type, $theme, $path) {
+  return array(
+    'hello_button_panel' => array(
+      'variables' => array(
+        'title' => NULL,
+      ),
+      'path' => drupal_get_path('module', 'glb_hello_button') . '/templates',
+      'template' => 'hello-button',
+    )
+  );
+}
+
+?>
