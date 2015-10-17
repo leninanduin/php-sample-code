@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Configuration panel for the hello button panel contents
+ * Configuration form panel for the hello button panel contents.
  */
 
 /**
@@ -15,7 +15,6 @@
 glb_hello_button;
 
 function glb_hello_button_admin_settings() {
-  // $form['#submit'][] = 'hello_btn_form_submit';
   $form['hello_btn_title'] = array(
     '#type' => 'textfield',
     '#title' => t('Panel title'),

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Finds the more popular number in a given array
+ * @param  array $array
+ */
 
 function getPopularNumber($array) {
   $freq = array_count_values($array);

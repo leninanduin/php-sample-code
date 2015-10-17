@@ -1,5 +1,11 @@
 <?php
-  function esPalindromo($s) {
+  /**
+   * Finds if a given string is a palindrome.
+   *
+   * @param  string $s
+   * @return boolean
+   */
+  function isPalindrome($s) {
     $letters = str_split($s);
     $letters_size = sizeof($letters);
 
@@ -10,6 +16,6 @@
 
     return ($s == $new_s);
   }
-  echo esPalindromo('ojo').'-';
-  echo esPalindromo('juan');
+
+  echo isPalindrome('racecar');
 ?>

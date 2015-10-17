@@ -1,6 +1,11 @@
 <?php
   module_load_include("module", "redirect");
 
+  /**
+   * Implements of hook_install().
+   *
+   * Creates 301 url redirects for old or unable URLS using the redirect module.
+   */
   function glb_url_redirects_install() {
     $row = 1;
     $saved = 0;
